@@ -4,6 +4,9 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class TryWithResources {
+
+    private TryWithResources () {}
+
     public static void copyText(File input, File output) {
         if (input == null || output == null) {
             System.err.printf("Nie można znaleźć pliku %s lub %s", input, output);
@@ -14,7 +17,7 @@ public class TryWithResources {
         try {
             in = new Scanner(input);
             out = new PrintWriter(output);
-            while(in.hasNextLine()) { // zabezpieczenie przed wyrzuceniem wyjątku przez metodę hasNext(), next() lub println();
+            while(in.hasNextLine()) {
                 out.print(in.nextLine());
             }
         } catch (FileNotFoundException e) {
